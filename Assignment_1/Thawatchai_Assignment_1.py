@@ -1,30 +1,34 @@
-import math
+import math # import math for using "floor" function
 
-PRICE_GA_TICKET = 90
-PRICE_RGS_TICKET = 150
-PRICE_P_TICKET = 250
-PRICE_LP_TICKET = 350
-is_input_invalid = False
+PRICE_GA_TICKET = 90 # constant value of price for General Admission ticket
+PRICE_RGS_TICKET = 150 # constant value of price for Reserved Grandstand Seating ticket
+PRICE_P_TICKET = 250 # constant value of price for The Precinct ticket
+PRICE_LP_TICKET = 350 # constant value of price for Lunch Packages on Everest ticket
+is_input_invalid = False # True = there is some invalid inputs, False = there is no invalid inputs
 
 
-def calculateSaleAmount(ticket_price, ticket_number):
-    ticket_number_int = parseInt(ticket_number)
-    if type(ticket_number_int) == int:
-        return ticket_number_int * ticket_price
+# function used for calculate sale amount of ticket
+def calculateSaleAmount(ticket_price, sold_ticket_number):
+    sold_ticket_number_int = parseInt(sold_ticket_number) # convert string of sold ticket to integer
+    if type(sold_ticket_number_int) == int:
+        # if number of sold ticket is integer then multiply it by the price and return
+        return sold_ticket_number_int * ticket_price
     else:
-        global is_input_invalid
-        is_input_invalid = True
-        return "The input is invalid!!!"
+        # if it is not integer
+        global is_input_invalid # declare for using global variable
+        is_input_invalid = True # set to True because there is some invalid input
+        return "The input is invalid!!!" # return error message
 
 
+# function used for converting string to integer
 def parseInt(val):
     try:
         tempFloat = float(val)
-        if tempFloat % math.floor(tempFloat) == 0:
-            return int(tempFloat)
+        if tempFloat % math.floor(tempFloat) == 0: # if the argument likes "1.0" or "21.0"
+            return int(tempFloat) # then convert it to integer and return
         else:
             return False
-    except ValueError:
+    except ValueError: # this exception occurs when the argument can not be converted to float or int
         return False
 
 print("----------------------------------------------------------------------------------------------")
