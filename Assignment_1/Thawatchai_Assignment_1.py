@@ -23,9 +23,9 @@ def calculateSaleAmount(ticket_price, sold_ticket_number):
 # function used for converting string to integer
 def parseInt(val):
     try:
-        tempFloat = float(val)
+        tempFloat = float(val) # convert string to float
         if tempFloat % math.floor(tempFloat) == 0: # if the argument likes "1.0" or "21.0"
-            return int(tempFloat) # then convert it to integer and return
+            return int(tempFloat) # then convert float to integer and return
         else:
             return False
     except ValueError: # this exception occurs when the argument can not be converted to float or int
