@@ -16,7 +16,7 @@ def calculateSaleAmount(ticket_price, sold_ticket_number):
     else:
         # if it is not integer
         global is_input_invalid # declare for using global variable
-        is_input_invalid = True # set to True because there is some invalid input
+        is_input_invalid = True # set to True because an invalid input is found
         return "The input is invalid!!!" # return error message
 
 
@@ -24,7 +24,7 @@ def calculateSaleAmount(ticket_price, sold_ticket_number):
 def parseInt(val):
     try:
         tempFloat = float(val) # convert string to float
-        if tempFloat % math.floor(tempFloat) == 0: # if the argument likes "1.0" or "21.0"
+        if tempFloat % math.floor(tempFloat) == 0: # if the argument is integer likes "1.0" or "21.0"
             return int(tempFloat) # then convert float to integer and return
         else:
             return False
@@ -40,23 +40,32 @@ num_rgs_ticket = input("Please enter the number of tickets sold for Reserved Gra
 num_p_ticket = input("Please enter the number of tickets sold for The Precinct: ")
 num_lp_ticket = input("Please enter the number of tickets sold for Lunch Packages on Everest: ")
 
-print("", "Thank You!", "", sep="\n")
+print("", "Thank You!", "", sep="\n") # display multiple messages and separated by new line
 
+# calculate sale amount of General Admission ticket
 sale_amount_ga = calculateSaleAmount(PRICE_GA_TICKET, num_ga_ticket)
 print("The sale amount of tickets for General Admission (in dollars):", sale_amount_ga)
 
+# calculate sale amount of Reserved Grandstand Seating ticket
 sale_amount_rgs = calculateSaleAmount(PRICE_RGS_TICKET, num_rgs_ticket)
 print("The sale amount of tickets for Reserved Grandstand Seating (in dollars): ", sale_amount_rgs)
 
+# calculate sale amount of The Precinct ticket
 sale_amount_p = calculateSaleAmount(PRICE_P_TICKET, num_p_ticket)
 print("The sale amount of tickets for The Precinct (in dollars): ", sale_amount_p)
 
+# calculate sale amount of Lunch Packages on Everest ticket
 sale_amount_lp = calculateSaleAmount(PRICE_LP_TICKET, num_lp_ticket)
 print("The sale amount of tickets for Lunch Packages on Everest (in dollars): ", sale_amount_lp)
 
+# if there is no any invalid inputs then calculate total amount, but not display error message
 if is_input_invalid is False:
+    # function sum returns integer, so it need to be converted to string for concatenating to others
     print("", "The total sale amount: " + str(sum([sale_amount_ga, sale_amount_rgs, sale_amount_p, sale_amount_lp])), "", sep="\n")
 else:
     print("", "The total sale amount: the total can not be calculated because of the invalid inputs!", "", sep="\n")
 
 print("Good Bye.")
+
+
+
