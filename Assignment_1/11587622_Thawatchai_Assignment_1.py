@@ -9,13 +9,19 @@ is_input_invalid = False # True = there is some invalid inputs, False = there is
 
 # function used for calculate sale amount of ticket
 def calculateSaleAmount(ticket_price, sold_ticket_number):
+    global is_input_invalid # declare for using global variable
     sold_ticket_number_int = parseInt(sold_ticket_number) # convert string of sold ticket to integer
     if type(sold_ticket_number_int) == int:
-        # if number of sold ticket is integer then multiply it by the price and return
-        return sold_ticket_number_int * ticket_price
+        if sold_ticket_number_int >= 0:
+            # if number of sold ticket is integer and more than or equal to zero
+            # then multiply it by the price and return
+            return sold_ticket_number_int * ticket_price
+        else:
+            # if number of sold ticket is less than zero
+            is_input_invalid = True
+            return "The input is invalid!!!"
     else:
         # if it is not integer
-        global is_input_invalid # declare for using global variable
         is_input_invalid = True # set to True because an invalid input is found
         return "The input is invalid!!!" # return error message
 
@@ -24,11 +30,24 @@ def calculateSaleAmount(ticket_price, sold_ticket_number):
 def parseInt(val):
     try:
         tempFloat = float(val) # convert string to float
-        if tempFloat % math.floor(tempFloat) == 0: # if the argument is integer likes "1.0" or "21.0"
-            return int(tempFloat) # then convert float to integer and return
+
+        # if the number is zero
+        if tempFloat == 0:
+            # then return zero
+            return 0
         else:
-            return False
-    except ValueError: # this exception occurs when the argument can not be converted to float or int
+            modDivisor = math.floor(tempFloat) # find the input without decimal
+            if modDivisor > 0:
+                # if the divisor for modulus is more than zero (this condition used to avoid the error "Modulus by zero)
+                # the condition also means that the input is not between 0.1 and 0.9
+                # then check that the number is integer or not
+                if tempFloat % modDivisor == 0: # if the argument is integer likes "1.0" or "21.0"
+                    return int(tempFloat) # then convert float to integer and return
+                else:
+                    return False
+            else:
+                return False
+    except ValueError: # this exception occurs when the argument cannot be converted to float or int
         return False
 
 print("----------------------------------------------------------------------------------------------")
@@ -63,7 +82,7 @@ if is_input_invalid is False:
     # function sum returns integer, so it need to be converted to string for concatenating to others
     print("", "The total sale amount: " + str(sum([sale_amount_ga, sale_amount_rgs, sale_amount_p, sale_amount_lp])), "", sep="\n")
 else:
-    print("", "The total sale amount: the total can not be calculated because of the invalid inputs!", "", sep="\n")
+    print("", "The total sale amount: the total cannot be calculated because of the invalid inputs!", "", sep="\n")
 
 print("Good Bye.")
 
