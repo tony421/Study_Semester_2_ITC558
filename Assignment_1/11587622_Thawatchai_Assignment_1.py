@@ -1,3 +1,11 @@
+# ITC558 - Programming Principles
+# Assignment 1
+# Thawatchai Jidsodsai (11587622)
+
+# This program is developed to help ticket officers
+# for calculating sale amounts of tickets sold for each type of tickets
+# and then summarise the total amount with sale amounts of every ticket types
+
 import math # import math for using "floor" function
 
 PRICE_GA_TICKET = 90 # constant value of price for General Admission ticket
