@@ -5,25 +5,25 @@
 #
 #
 
-PG_LANG = ['Python', 'Java', 'C++']
-PRICE_STD = {'Python': 300, 'Java': 200, 'C++': 175}
-PRICE_ADD_HR = {'Python': 200, 'Java': 150, 'C++': 175}
-PRICE_TEST = {'Python': 250, 'Java': 150, 'C++': 170}
-MIN_STD = {'Python': 5, 'Java': 4, 'C++': 6}
-MIN_ADD_HR = {'Python': 5, 'Java': 10, 'C++': 7}
-MIN_TEST = {'Python': 5, 'Java': 2, 'C++': 2}
+PG_LANG = ['python', 'java', 'c++']
+PRICE_STD = {'python': 300, 'java': 200, 'c++': 175}
+PRICE_ADD_HR = {'python': 200, 'java': 150, 'c++': 175}
+PRICE_TEST = {'python': 250, 'java': 150, 'c++': 170}
+MIN_STD = {'python': 5, 'java': 4, 'c++': 6}
+MIN_ADD_HR = {'python': 5, 'java': 10, 'c++': 7}
+MIN_TEST = {'python': 5, 'java': 2, 'c++': 2}
 
 print("----------------------------------------------------------------------------------------------")
 print("Welcome to Dr Ho Coaching Centre")
 print("----------------------------------------------------------------------------------------------")
 
-cmd_repeat = 'Y'
+cmd_repeat = 'y'
 while(cmd_repeat == 'Y' or cmd_repeat == 'y'):
     print("")
 
     lang = ""
     while (lang not in PG_LANG):
-        lang = input("Enter the name of the programming language: ")
+        lang = input("Enter the name of the programming language: ").lower()
 
     num_std = -1
     while (num_std < MIN_STD[lang]):
