@@ -1,6 +1,13 @@
-import model
-import controller
-import util
+# ITC558 - Programming Principles
+# Assignment 3
+# Thawatchai Jidsodsai (11587622)
+
+# This program is developed for AB Games company
+# so that help the company to recognizes the reason why its customers discontinue with it
+
+import model #import for Member and Rules models
+import controller # import for Member and Rule functions
+import util #import for utility functions (eg. parseInt)
 
 RULE_FILE = 'Rules.txt'
 READABLE_RULE_FILE = 'ReadableRules.txt'
@@ -21,10 +28,14 @@ try:
     # for mem in members:
     #     print("%s, %s, %s, %s, %s, %s" % (mem.getAge(),  mem.getWinLoss(), mem.getLogin(), mem.getGender(), mem.getIncome(), mem.getStatus()))
 
-    # loop all members to match rules
-    for member in members:
-        status = ruleController.matchRules(rules, member) # match a member with rules
-        member.setStatus(status) # set status for a member
+    # loop all members for matching with the rules
+    for i in range(len(members)):
+        try:
+            status = ruleController.matchRules(rules, members[i]) # match a member with rules
+            members[i].setStatus(status) # set status for a member
+        except:
+            # if any error occurs while matching rules, inform an error
+            raise Exception('Could not match rules with Member #' + str(i + 1))
 
     memberController.genMemberReport(MEMBER_REPORT_FILE, members) # generate MemberReport file
 

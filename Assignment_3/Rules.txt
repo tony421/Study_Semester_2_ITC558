@@ -1,5 +1,5 @@
 Age     Win-Loss	Log-in	Gender	Income	Status
-------------------------------------------------------
+-----------------------------------------------------------
 GE,25	GE,8		-	Male	-	Continue
 GE,25	LT,8		-	Male	-	Discontinue
 GE,25	-		-	Female	-	Discontinue

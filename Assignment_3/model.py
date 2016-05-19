@@ -1,3 +1,4 @@
+# class for Member data
 class Member:
     # initialize default values
     def __init__(self):
@@ -43,8 +44,12 @@ class Member:
 
     def setStatus(self, val):
         self.__status = val
+# >> End : Member <<
 
+
+# class for Rule data
 class Rule:
+    # initialize default values
     def __init__(self):
         self.__age = 0
         self.__win_loss = 0
@@ -123,3 +128,4 @@ class Rule:
 
     def setIncomeOperator(self, val):
         self.__income_operator = val
+# >> End : Rule <<
